@@ -99,7 +99,7 @@ This system provides:
 ```
 fairness-hr-reviews/
 │
-├── notebooks/
+├── notebook/
 │   └── FairnessInHRData.ipynb          # Main Colab notebook
 │
 ├── data/
