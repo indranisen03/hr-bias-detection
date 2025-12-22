@@ -6,7 +6,7 @@ Detect and remediate bias in performance reviews using multi-dimensional analysi
 
 ## 📖 **Project Evolution**
 
-### **Version 1 - Original (Nov 2024)**
+### **Version 1 - Original (Nov 2025)**
 
 **Core Innovation**: Agentic AI workflow with RAG-grounded LLM rewriting
 
@@ -103,6 +103,19 @@ PDF/DOCX/TXT → Extract → 5D Bias Detection → Context-Aware RAG → LLM Rew
 - Retry logic with exponential backoff
 - Graceful degradation on API failures
 - Human review flag for persistent high bias
+
+## 🔒 Security & Compliance Layer (SOC 2 Readiness)
+
+To ensure this pipeline is enterprise-ready, I implemented a **PII Redaction Middleware** that sanitizes unstructured data before it reaches the inference layer.
+
+### Current Implementation (Prototype)
+* **Regex-Based Scrubbing:** Instantly identifies and hashes high-risk PII patterns including SSNs (`\d{3}-\d{2}-\d{4}`), Email Addresses, and Phone Numbers.
+* **Strict Pattern Matching:** Currently uses strict capitalization rules (`[A-Z][a-z]+`) for name detection to demonstrate the architectural hook.
+
+### Production Roadmap (v3.0)
+In a production environment, I would upgrade this module to **Microsoft Presidio** to solve the "Over-Redaction" problem:
+* **Context-Aware NER:** Leveraging NLP models (e.g., `en_core_web_trf`) to distinguish between **PII**  and **Business Entities**.
+* **Custom Denylist:** Injecting client-specific terms to prevent accidental scrubbing of internal project code names.
 
 ---
 
